@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html></html>
+<html lang="fr" dir="ltr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="Sonia Hammou, graphiste, illustratrice developpeuse web.">
+		<meta name="keywords" content="graphiste">
+		<meta name="author" content="sonia hammou">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<title>
+			Sonia Hammou- Graphiste, Illustratrice, Developpeuse Web
+		</title>
+
+
+		<!-- scoll -->
+		{% block stylesheets %}
+
+			<!-- Main css -->
+			<link rel="stylesheet" href="css/style.css">
+			<link rel="stylesheet" href="css/normalize.css">
+
+			<!-- typo -->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+			<link rel='stylesheet' href='https://cdn.rawgit.com/dimsemenov/Magnific-Popup/master/dist/magnific-popup.css'>
+			<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,700" rel="stylesheet">
+			<link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:ital,wght@0,900;1,900&display=swap" rel="stylesheet">
+		{% endblock %}
+
+		{% block javascripts %}{% endblock %}
+	</head>
+
+
+	{% include "fragments/nav.html.twig"%}
+
+	<body>
+		{% block body %}{% endblock %}
+        	{% include 'fragments/footer.html.twig' %}
+
+	</body>
+
+
+<script src="https://use.fontawesome.com/88a44a09b2.js"></script>
+
+</html>

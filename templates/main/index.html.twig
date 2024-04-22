@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+	<div class="home_wrapper">
+		<section class="main_home_content">
+
+			<h1 class="main_title">Graphiste, Illustratrice .</h1>
+			<p>Ma priorité est de mener à bien vos projets ! Je réalise tous supports de communication print et numérique.</p>
+
+			<button class="main_home_content_button">
+				<a href="#">Découvrir les projets</a>
+			</button>
+
+			<button class="main_home_content_button">
+				<a href="#">Contactez-moi</a>
+			</button>
+
+		</section>
+
+		<section>
+			<img src="https://s.tmimgcdn.com/scr/800x500/337900/illustration-de-graphiste-filles-sur-ordinateur-vector-art-concepteur-concevant-un-travail-de-concept_337995-original.jpg">
+		</section>
+
+	</div>
+
+</div>
+{# <section class="main_home_section-projet">
+		<h4 class="main_title">Derniers projets</h4>
+		<p>Édition & Infographie.</p> #}
+
+
+<section class="gallery">
+	<header class="galery-header">
+		<h1 class="main_title">Les derniers projets</h1>
+		<p>
+			Découvrez les derniers projets
+		</p>
+	</header>
+
+	{% for _ in 1..4 %}
+		<figure class="gallery-item">
+			<img src="https://s.tmimgcdn.com/scr/800x500/337900/illustration-de-graphiste-filles-sur-ordinateur-vector-art-concepteur-concevant-un-travail-de-concept_337995-original.jpg">
+			<figcaption class="gallery-item-caption">
+				<h2>Provence Rugby.</h2>
+				<p>
+					ÉDITION, Infographie, Packaging</p>
+				<a href="#"></a>
+			</figcaption>
+		</figure>
+	{% endfor %}
+
+</section>{% endblock %}

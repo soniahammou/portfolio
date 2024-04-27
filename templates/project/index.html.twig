@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+
+	<header class="project_header">
+		<h4>
+			projets.</h4>
+		<p>
+			Le graphisme ouvre
+			<strong class="black">le champs des possibles.<br></strong>
+			Voici différents clients issus de secteurs d'activités communs ou différents qui ont fait appel à mes services.</p>
+	</header>
+
+
+	<main class="project_gallery">
+
+
+		{% for key ,project in projects%}
+		<figure class="gallery-item">
+			<a href="{{ path('app_project_show', {"id": project.id}) }}"> <img src="{{project.picture}}"> </a>
+				<figcaption class="gallery-item_caption">
+					<h2>{{project.title}}</h2>
+					{% for tag in project.tags %}
+						<p class="gallery-item_tag">{{tag.name}}</p>
+					{% endfor %}
+				</figcaption>
+			</figure>
+		{% endfor %}
+
+
+	</main>
+
+
+{% endblock %}

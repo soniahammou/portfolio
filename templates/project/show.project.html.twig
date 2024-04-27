@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+	<section class="header_show_project">
+
+		<header class="header_show_project-main-title">
+			<h1>
+				{{project.title}}</h1>
+			<p>{{project.summary}}></p>
+		</header>
+
+		<section class="header_show_project-infos">
+
+			<section>
+
+				<h5>LOGICIELS
+				</h5>
+
+				{% for project in project.logiciels %}
+					<p class="header_show_project-paragraph">{{project.name}}</p>
+				{% endfor %}
+			</section>
+
+			<section>
+				<h5>savoir faire</h5>
+
+				{% for project in project.tags %}
+					<p class="header_show_project-paragraph">{{project.name}}.</p>
+				{% endfor %}
+			</section>
+
+		</section>
+
+
+	</section>
+
+
+	<main>
+
+
+
+{% for project in project.subprojects %}
+    <pre>
+    {{ dump(project) }}
+</pre>
+		<section>
+
+			<header>
+				<h4 class="titreso2">{{project.title}}</h4>
+				<p>{{project.summary}}<p>
+			</header>
+
+			<h4 class="ti">
+				<p>{{project.subtitle}}<p>
+			</h4>
+			<p class="savoir-faire">
+				<p>{{project.content}}<p>
+                {% for project in project.logiciels %}
+
+			<p class="text-justify">
+{{project.name}}			</p>
+{% endfor %}
+
+
+			<img src="{{project.picture}}">
+
+		</section>
+{% endfor %}
+
+	</main>
+
+
+{% endblock %}

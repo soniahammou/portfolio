@@ -24,9 +24,6 @@
 	</div>
 
 </div>
-{# <section class="main_home_section-projet">
-		<h4 class="main_title">Derniers projets</h4>
-		<p>Édition & Infographie.</p> #}
 
 
 <section class="gallery">
@@ -37,16 +34,6 @@
 		</p>
 	</header>
 
-	{% for _ in 1..4 %}
-		<figure class="gallery-item">
-			<img src="https://s.tmimgcdn.com/scr/800x500/337900/illustration-de-graphiste-filles-sur-ordinateur-vector-art-concepteur-concevant-un-travail-de-concept_337995-original.jpg">
-			<figcaption class="gallery-item-caption">
-				<h2>Provence Rugby.</h2>
-				<p>
-					ÉDITION, Infographie, Packaging</p>
-				<a href="#"></a>
-			</figcaption>
-		</figure>
-	{% endfor %}
+		{# {% include "fragments/_gallery.tpl.html.twig" %} #}
 
 </section>{% endblock %}

@@ -2,6 +2,7 @@
 
 
 {% block body %}
+
 	<section class="header_show_project">
 
 		<header class="header_show_project-main-title">
@@ -37,38 +38,30 @@
 
 
 	<main>
+		{% for project in project.subprojects %}
+			<section class="main_show_project">
 
+				<header>
+					<h4 class="main_show_project-title">{{project.title}}</h4>
+					<p>{{project.summary}}</p>
 
+					<h6>{{project.subtitle}}</h6>
 
-{% for project in project.subprojects %}
-    <pre>
-    {{ dump(project) }}
-</pre>
-		<section>
+						{% for logiciel in project.logiciels %}
+							<p class="main_show_project-logiciels">{{logiciel.name}}.</p>
+						{% endfor %}
 
-			<header>
-				<h4 class="titreso2">{{project.title}}</h4>
-				<p>{{project.summary}}<p>
-			</header>
+						<p>{{project.content}}</p>
+					</header>
+                    
+				<section class="main_show_project-gallery">
+                    {% for picture in project.imageSubprojects %}
+						<figure><img src="{{picture.picture}}" alt=""></figure>
+					{% endfor %}
+						</section>
 
-			<h4 class="ti">
-				<p>{{project.subtitle}}<p>
-			</h4>
-			<p class="savoir-faire">
-				<p>{{project.content}}<p>
-                {% for project in project.logiciels %}
-
-			<p class="text-justify">
-{{project.name}}			</p>
-{% endfor %}
-
-
-			<img src="{{project.picture}}">
-
-		</section>
-{% endfor %}
-
+			</section>
+		{% endfor %}
 	</main>
-
 
 {% endblock %}

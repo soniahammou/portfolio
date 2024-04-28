@@ -27,9 +27,6 @@ class Subproject
     #[ORM\Column(length: 3000, nullable: true)]
     private ?string $content = null;
 
-    #[ORM\Column(length: 400)]
-    private ?string $picture = null;
-
     #[ORM\ManyToOne(inversedBy: 'subprojects')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Project $project = null;
@@ -40,9 +37,16 @@ class Subproject
     #[ORM\ManyToMany(targetEntity: Logiciel::class, inversedBy: 'subprojects')]
     private Collection $logiciels;
 
+    /**
+     * @var Collection<int, ImageSubproject>
+     */
+    #[ORM\ManyToMany(targetEntity: ImageSubproject::class, mappedBy: 'images')]
+    private Collection $imageSubprojects;
+
     public function __construct()
     {
         $this->logiciels = new ArrayCollection();
+        $this->imageSubprojects = new ArrayCollection();
     }
 
  
@@ -102,18 +106,6 @@ class Subproject
         return $this;
     }
 
-    public function getPicture(): ?string
-    {
-        return $this->picture;
-    }
-
-    public function setPicture(string $picture): static
-    {
-        $this->picture = $picture;
-
-        return $this;
-    }
-
     public function getProject(): ?Project
     {
         return $this->project;
@@ -149,6 +141,35 @@ class Subproject
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, ImageSubproject>
+     */
+    public function getImageSubprojects(): Collection
+    {
+        return $this->imageSubprojects;
+    }
+
+    public function addImageSubproject(ImageSubproject $imageSubproject): static
+    {
+        if (!$this->imageSubprojects->contains($imageSubproject)) {
+            $this->imageSubprojects->add($imageSubproject);
+            $imageSubproject->addImage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImageSubproject(ImageSubproject $imageSubproject): static
+    {
+        if ($this->imageSubprojects->removeElement($imageSubproject)) {
+            $imageSubproject->removeImage($this);
+        }
+
+        return $this;
+    }
+
+
 
   
 

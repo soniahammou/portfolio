@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\DataFixtures\Providers\AppProvider;
 use App\DataFixtures\Providers\AppProviders;
+use App\Entity\ImageSubproject;
 use App\Entity\Logiciel;
 use App\Entity\Project;
 use App\Entity\Subproject;
@@ -66,20 +67,9 @@ class AppFixtures extends Fixture
             $subprojects = new Subproject;
             $subprojects->setTitle('titre de sous projets');
             $subprojects->setSummary($faker->paragraph(1));
-            $subprojects->setSubtitle($faker->text());
+            $subprojects->setSubtitle('sous titre');
             $subprojects->setContent($faker->paragraph(1));
-            $subprojects->setPicture($faker->imageUrl());
 
-            
-            $num_photos = mt_rand(1, 5);
-
-            if ($num_photos > 1){
-                    for ($i = 0; $i < $num_photos; $i++) {
-                        $subprojects->setPicture($faker->imageUrl());
-                    }
-               
-                }
-            
 
             //les clefs etrangere       
             $subprojects->setProject($projects[array_rand($projects)]);
@@ -88,7 +78,16 @@ class AppFixtures extends Fixture
             $subproject[] = $subprojects;
         }
 
+        
+        for($z=1; $z <=20; $z++){
+            $images = new ImageSubproject;
+            $images->setPicture($faker->imageUrl());
+            $images->addImage(($subproject[array_rand($subproject)]));
+            
+             $manager->persist($images);
 
+         }
+                
 
         // ! Logiciel
         // $outils = [
@@ -108,21 +107,6 @@ class AppFixtures extends Fixture
 
             $manager->persist($logiciel);
         }
-
-
-
-        // // ! GalleryCategory
-        // for ($l = 1; $l <= 8; $l++) {
-        //     $galleryCategory = new GalleryCategory;
-        //     //todo mettre un id de projet existant
-
-        //     $project = new Project;
-        //     $galleryCategory->setHomeOrder(mt_rand(1, 4));
-        //     $galleryCategory->setPicture($faker->imageUrl());
-        //     $galleryCategory->addProject($projects[array_rand($projects)]);
-
-        //     $manager->persist($galleryCategory);
-        // }
 
 
         $manager->flush();

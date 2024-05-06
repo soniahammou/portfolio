@@ -38,15 +38,20 @@ class Subproject
     private Collection $logiciels;
 
     /**
-     * @var Collection<int, ImageSubproject>
+     * @var Collection<int, Pictures>
      */
-    #[ORM\ManyToMany(targetEntity: ImageSubproject::class, mappedBy: 'images')]
-    private Collection $imageSubprojects;
+    #[ORM\ManyToMany(targetEntity: Pictures::class, mappedBy: 'pictures')]
+    private Collection $pictures;
+
+    #[ORM\Column(length: 100)]
+    private ?string $status = null;
+
+   
 
     public function __construct()
     {
         $this->logiciels = new ArrayCollection();
-        $this->imageSubprojects = new ArrayCollection();
+        $this->pictures = new ArrayCollection();
     }
 
  
@@ -143,32 +148,43 @@ class Subproject
     }
 
     /**
-     * @return Collection<int, ImageSubproject>
+     * @return Collection<int, Pictures>
      */
-    public function getImageSubprojects(): Collection
+    public function getPictures(): Collection
     {
-        return $this->imageSubprojects;
+        return $this->pictures;
     }
 
-    public function addImageSubproject(ImageSubproject $imageSubproject): static
+    public function addPicture(Pictures $picture): static
     {
-        if (!$this->imageSubprojects->contains($imageSubproject)) {
-            $this->imageSubprojects->add($imageSubproject);
-            $imageSubproject->addImage($this);
+        if (!$this->pictures->contains($picture)) {
+            $this->pictures->add($picture);
+            $picture->addPicture($this);
         }
 
         return $this;
     }
 
-    public function removeImageSubproject(ImageSubproject $imageSubproject): static
+    public function removePicture(Pictures $picture): static
     {
-        if ($this->imageSubprojects->removeElement($imageSubproject)) {
-            $imageSubproject->removeImage($this);
+        if ($this->pictures->removeElement($picture)) {
+            $picture->removePicture($this);
         }
 
         return $this;
     }
 
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
 
 
   

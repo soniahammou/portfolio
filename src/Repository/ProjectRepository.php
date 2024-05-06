@@ -24,18 +24,20 @@ class ProjectRepository extends ServiceEntityRepository
     //    /**
     //     * @return Project[] Returns an array of Project objects
     //     */
-    //    public function findByExampleField($value): array
+    //    public function findAllByDate($value): array
     //    {
+    //         //? SELECT FROM P ( project)
     //        return $this->createQueryBuilder('p')
     //            ->andWhere('p.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('p.id', 'ASC')
-    //            ->setMaxResults(10)
+    //            ->orderBy('p.created_at', 'DESC')
+    //            ->setMaxResults(4)
     //            ->getQuery()
     //            ->getResult()
     //        ;
-    //    }
+      // }
 
+
+       
     //    public function findOneBySomeField($value): ?Project
     //    {
     //        return $this->createQueryBuilder('p')

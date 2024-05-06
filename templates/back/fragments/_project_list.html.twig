@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <div class="col">  
+
+	<table class="table table-striped table-hover table-sm">
+		<thead>
+			<tr>
+				<th scope="col">Clients</th>
+				<th scope="col">Tags</th>
+				<th scope="col">Infos</th>
+				<th scope="col">Logo</th>
+				<th scope="col"> Suprojects</th>
+        		<th scope="col">Status</th>
+  
+			</tr>
+		</thead>
+
+		<tbody>
+
+			{% for projet in projetsList %}
+      	<tr class="table">
+				<td>{{projet.title}}</td>
+
+						<td>
+            {% for tags in projet.tags %}
+							<p>{{tags.name}}</p>
+          {% endfor %}
+              </td>
+
+					<td>{{projet.summary}}</td>
+					<td><img src="{{projet.picture}}" alt="" class="img-thumbnail"></td>
+
+
+			{% set totalLength = 0 %}
+
+			{% for subproject in projet.subprojects %}
+				{% set totalLength = totalLength + subproject | length %}
+			{% endfor %}
+
+			<td> {{ totalLength }} sous-projets</td>
+          {# {{TODO: ajouter la publi}} #}
+	
+          <td>{{projet.status}}</td>
+        	<td><a href="{{path('app_back_projet_show', {id: projet.id})}}"><button type="button" class="btn btn-primary">voir</button></a></td>
+        	<td><a href="{{path('app_back_projet_update', {id: projet.id})}}"><button type="button" class="btn btn-warning">modifier</button></a></td>
+			
+{# TODO:SIMPLIFIER LA CONDITION :  #}
+	{% if projet.status is same as('Archivé')%}	
+	<td><a href="{{path('app_back_projet_publishPost', {id: projet.id})}}"><button type="button" class="btn btn-success">publié</button></td>
+	
+
+
+	{% elseif projet.status is same as('Brouillon')%}	
+	<td><a href="{{path('app_back_projet_publishPost',{id: projet.id})}}"><button type="button" class="btn btn-success">publié</button></td>
+	<td><a href="{{path('app_back_projet_archiver', {id: projet.id})}}"><button type="button" class="btn btn-danger">archivé</button></td>
+
+
+	{% else %}
+	<td><a href="{{path('app_back_projet_archiver', {id: projet.id})}}"><button type="button" class="btn btn-danger">archivé</button></td>
+	{% endif %}
+
+
+
+			<td>
+				</tr>
+
+			{% endfor %}
+				
+		</tbody>
+	</table>
+</div>
+  </div>
+</div>

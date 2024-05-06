@@ -1,0 +1,142 @@
+{% extends 'back/base.html.twig' %}
+
+
+{% block body %}
+
+	<div class="container">
+		<div class="row">
+			
+			<div class="col-md-5 mt-5 mb-5">
+				<h1>Project : {{project.title}} </h1>
+
+				<a href="{{path('app_back_projet_add')}}"><button type="button" class="btn btn-primary">Ajouter un nouveau projet</button></a>
+				<a href="{{path('app_main')}}"> <button type="button" class="btn btn-primary"> Voir le frontOffice</button> </a>
+
+			</div>
+		</div>
+	</div>
+
+{# TODO:faire un fragments pour la page show des sous projet avec une variable maleable #}
+	<div class="container">
+		<div class="row">
+			<div class="col md-12">
+				<table class="table table-striped table-hover table-sm-12">
+					<thead>
+						<tr>
+							<th scope="col">Clients</th>
+							<th scope="col">tags</th>
+							<th scope="col">Logiciel</th>
+							<th scope="col">Résumé</th>
+							<th scope="col">Gallerie Miniature</th>
+							<th scope="col">status</th>
+						</tr>
+					</thead>
+
+					<tbody>
+
+			<tr class="table">
+							<td>{{project.title}}</td>
+
+							<td>
+								{% for tags in project.tags %}
+									<p>{{tags.name}}</p>
+								{% endfor %}
+							</td>
+	<td>
+								{% for logiciel in project.logiciels %}
+									<p>{{logiciel.name}}</p>
+								{% endfor %}
+							</td>
+							<td>{{project.summary}}</td>
+							<td><img src="{{project.picture}}" alt="" class="img-thumbnail"></td>
+
+							{# {{TODO: ajouter la date de publi}} #}
+							<td>{{project.status}}</td>
+
+							{# {{TODO: ajouter une puce de couleur pour se reperer a coté du status}} #}
+
+							<td>
+								<button type="button" class="btn btn-warning">modifier</button>
+							</td>
+
+							{% if project.status is same as('Archivé')%}
+
+								<td>
+									<button type="button" class="btn btn-success">publié</button>
+								</td>
+
+							{% elseif project.status is same as('Brouillon')%}
+								<td>
+									<button type="button" class="btn btn-danger">archivé</button>
+								</td>
+								<td>
+									<button type="button" class="btn btn-success">publié</button>
+								</td>
+
+
+							{% else %}
+								<td>
+									<button type="button" class="btn btn-danger">archivé</button>
+								</td>
+							{% endif %}
+
+						</tr>
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container">
+		<div class="row">
+			<div class="col md-12">
+			{% set totalLength = 0 %}
+			{% set totalLength = totalLength + project.subprojects  | length %}
+
+			<h3>{{ totalLength }} Sous-projet project</h3>
+				<button type="button" class="btn btn-primary">Ajouter un nouveau sous-projet</button>
+
+				<table class="table table-striped table-hover table-sm-12">
+					<thead>
+						<tr>
+							<th scope="col">titre</th>
+							<th scope="col">resumé</th>
+							<th scope="col">status</th>
+
+						</tr> 
+					</thead>
+					<tbody>
+					{% for subproject in project.subprojects %}
+
+						<tr class="table">
+						<td>{{subproject.title}}</td>
+						<td>{{subproject.summary}}</td>
+						<td>{{subproject.status}}</td>        	
+						<td><a href="{{path('app_back_subproject_show', {id:subproject.id})}}"><button type="button" class="btn btn-primary">voir</button></a></td>
+
+
+						<td>  <button type="button" class="btn btn-warning">modifier</button> </td>
+
+						{% if subproject.status is same as('Archivé')%}
+
+								<td>  <button type="button" class="btn btn-success">publié</button> </td>
+
+							{% elseif subproject.status is same as('Brouillon')%}
+								<td> <button type="button" class="btn btn-danger">archivé</button> </td>
+								<td> <button type="button" class="btn btn-success">publié</button> </td>
+
+							{% else %}
+									<td><button type="button" class="btn btn-danger">archivé</button></td>
+							{% endif %}
+						</tr>
+					{% endfor %}
+				</tbody>
+			
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends 'back/base.html.twig' %}
+
+
+
+{% block body %}
+
+
+<div class="container bg-light pt-5">
+
+		<div class="row mb-2">
+
+			<div class="col">
+			{# <a href="{{ path('app_back_media_browse')}}" class="btn btn-secondary">Retour</a> #}
+			<h1>Nouveau sous projet</h1>
+
+				{{ form_start(form, {"attr" : {"novalidate": "novalidate"}}) }}
+					{{ form_row(form.title) }}
+					{{ form_row(form.summary) }}
+					{{ form_row(form.subtitle) }}
+					{{ form_row(form.content) }}
+					{{ form_row(form.logiciels) }}
+                   
+					<button class="btn btn-primary">Envoyer</button>
+
+                    {{ form_end(form) }}
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+{% endblock %}

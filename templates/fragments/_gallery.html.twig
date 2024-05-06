@@ -1,0 +1,22 @@
+<main class="project_gallery">
+
+		{% for key ,project in projects%}
+		
+		{% if project.status is same as('Publié') %}
+		
+		<figure class="gallery-item">
+			<a href="{{ path('app_project_show', {"id": project.id}) }}"> <img src="{{project.picture}}"> </a>
+				<figcaption class="gallery-item_caption">
+					<h2>{{project.title}}</h2>
+					{% for tag in project.tags %}
+						<p class="gallery-item_tag">{{tag.name}}</p>
+					{% endfor %}
+					</figcaption>
+				</figure>
+					{% endif %}
+
+			{% endfor %}
+		
+
+
+	</main>

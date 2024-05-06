@@ -1,0 +1,83 @@
+{% extends 'front/base.html.twig' %}
+{% block body %}
+
+	<div class="home_wrapper">
+		<section class="main_home_content">
+
+		<div>
+			<h1 class="main_title">Graphiste, Illustratrice .</h1>
+			<p>Ma priorité est de mener à bien vos projets ! Je réalise tous supports de communication print et numérique.</p>
+		<div>
+
+		<div>
+			<button class="main_home_content_button">
+				<a href="{{path('app_project_list')}}">Découvrir les projets</a>
+			</button>
+
+			<button class="main_home_content_button">
+			<a href="{{path('app_contact')}}">Contactez-moi</a>
+			</button>
+		</div>
+		</section>
+
+		<figure>
+			<img src="https://s.tmimgcdn.com/scr/800x500/337900/illustration-de-graphiste-filles-sur-ordinateur-vector-art-concepteur-concevant-un-travail-de-concept_337995-original.jpg">
+		</figure>
+
+</div>
+
+
+{# ------------------------------------------------------------------------
+Section : about 
+------------------------------------------------------------------------ #}
+
+<section class="main_home_about">
+    
+         <h3 class="main_home_about-title"> Graphiste, je réponds à tous vos besoins en communication visuelle et digitale.</h3>
+
+<section class="main_home_about-article">
+               <article>
+                   <h3>Identité visuelle </h3>
+                   <p class="main_home_about-article-paragraph"> Ma priorité est de mener à bien vos projets ! 
+                    Je réalise<strong> tous supports de communication print et numérique.</strong></p>
+               </article> 
+
+
+               <article>
+                    <h3> Supports imprimés   </h3> 
+                    <p class="main_home_about-article-paragraph"> Vous avez besoin d'une illustratrice pour votre projet ? Nous pouvons le construire selon vos objectifs. </p>
+             </article> 
+     <article>
+                    <h3> Créations de vidéos   </h3> 
+                    <p class="main_home_about-article-paragraph"> De la conception à la post-production, je suis là pour concrétiser vos projets vidéo</p>
+             </article> 
+               <article>
+                <h3>Création de site web </h3>
+                    <p class="main_home_about-article-paragraph">Je serai ravie de travailler avec vous, pour vous aider à atteindre vos objectifs !<br>
+                  
+                   </article>
+                 
+               </article>
+
+          </article>
+     </article>
+</section>
+</section>
+
+
+{# ------------------------------------------------------------------------
+Section : Gallery dernier projets 
+------------------------------------------------------------------------ #}
+
+<section class="gallery">
+	<header class="galery-header">
+		<h1 class="main_title">Les derniers projets</h1>
+		<p>
+			Découvrez les derniers projets
+		</p>
+	</header>
+</section>
+	
+	{% include "fragments/_gallery.html.twig" %}
+
+{% endblock %}

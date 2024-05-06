@@ -1,0 +1,28 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+
+<section id="contact">
+<h2> Contact </h2>
+{{form(form)}}
+
+{# {{TODO: faire le form peronnalisé}} #}
+
+    {# <form id="contact-form" class="form-horizontal" role="form">
+        {{ form_start(form) }}
+
+        <div class="form-control">
+            {{ form_errors(form) }}
+        </div>
+
+        <div class="contact-form-info">
+            {{ form_end(form) }}
+            </div>
+        </div>
+
+    </form>
+   #}
+
+
+</section>  
+{% endblock %}

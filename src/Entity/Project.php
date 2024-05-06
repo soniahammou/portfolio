@@ -6,6 +6,7 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
@@ -14,22 +15,34 @@ class Project
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+    
+    #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
+    #[Assert\Length(
+        min: 5,
+        max: 100,
+    )]
     private ?string $title = null;
 
+    #[Assert\Length(
+        min: 5,
+        max: 300,
+    )]
+    #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
+    #[Assert\Regex('/^\w+/')]
     private ?string $summary = null;
     
+    #[Assert\NotBlank]
     #[ORM\Column(length: 500)]
     private ?string $picture = null;
 
-    #[ORM\Column]
-    private ?int $home_order = null;
+
 
     /**
      * @var Collection<int, Logiciel>
      */
+    #[Assert\NotBlank]
     #[ORM\ManyToMany(targetEntity: Logiciel::class, inversedBy: 'projects')]
     private Collection $logiciels;
 
@@ -42,8 +55,23 @@ class Project
     /**
      * @var Collection<int, Tags>
      */
+    #[Assert\NotBlank]
     #[ORM\ManyToMany(targetEntity: Tags::class, inversedBy: 'projects')]
     private Collection $tags;
+
+    #[ORM\Column]
+    // #[Assert\DateTime]
+    private ?\DateTimeImmutable $created_at = null;
+
+    #[ORM\Column(nullable: true)]
+    // #[Assert\DateTime]
+    private ?\DateTimeImmutable $updated_at = null;
+
+    #[Assert\NotBlank]
+    #[ORM\Column(length: 100)]
+    private ?string $status = null;
+    
+
 
  
     public function __construct()
@@ -51,6 +79,8 @@ class Project
         $this->logiciels = new ArrayCollection();
         $this->subprojects = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->created_at = new \DateTimeImmutable();
+
     }
 
     public function getId(): ?int
@@ -151,17 +181,6 @@ class Project
         return $this;
     }
 
-    public function getHomeOrder(): ?int
-    {
-        return $this->home_order;
-    }
-
-    public function setHomeOrder(int $home_order): static
-    {
-        $this->home_order = $home_order;
-
-        return $this;
-    }
 
     /**
      * @return Collection<int, Tags>
@@ -186,4 +205,43 @@ class Project
 
         return $this;
     }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->created_at;
+    }
+
+    public function setCreatedAt(\DateTimeImmutable $created_at): static
+    {
+        $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updated_at;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $updated_at): static
+    {
+        $this->updated_at = $updated_at;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): static
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+
+
 }

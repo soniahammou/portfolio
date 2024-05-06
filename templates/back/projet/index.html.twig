@@ -1,0 +1,20 @@
+{% extends 'back/base.html.twig' %}
+{% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-5 mt-5 mb-5"> 
+		<h1> BackOffice</h1>
+
+      <h3>Les projets graphiques</small> </h3>
+      <button type="button" class="btn btn-primary">Ajouter un nouveau projet</button>
+	  <a href="{{path('app_main')}}"><button type="button" class="btn btn-primary"> Voir le frontOffice</button></a>
+
+    </div>
+  </div>
+</div>
+
+{% include "back/fragments/_project_list.html.twig" %}
+
+
+
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'front/base.html.twig' %}
+
+
+{% block body %}
+
+
+	<section class="header_show_project">
+
+		<header class="header_show_project-main-title">
+			<h1>
+				{{project.title}}</h1>
+			<p>{{project.summary}}></p>
+		</header>
+
+		<section class="header_show_project-infos">
+
+			<section>
+
+				<h5>LOGICIELS
+				</h5>
+
+				{% for project in project.logiciels %}
+					<p class="header_show_project-paragraph">{{project.name}}</p>
+				{% endfor %}
+			</section>
+
+			<section>
+				<h5>savoir faire</h5>
+
+				{% for project in project.tags %}
+					<p class="header_show_project-paragraph">{{project.name}}.</p>
+				{% endfor %}
+			</section>
+
+		</section>
+
+
+	</section>
+
+
+
+	<main>
+		{% for project in project.subprojects %}
+			<section class="main_show_project">
+
+				<header>
+					<h4 class="main_show_project-title">{{project.title}}</h4>
+					<p>{{project.summary}}</p>
+
+					<h6>{{project.subtitle}}</h6>
+
+						{% for logiciel in project.logiciels %}
+							<p class="main_show_project-logiciels">{{logiciel.name}}.</p>
+						{% endfor %}
+
+						<p>{{project.content}}</p>
+					</header>
+
+
+				<section class="main_show_project-gallery">
+                    {% for picture in project.pictures %}	
+					<figure><img src="{{picture.subproject}}" alt=""></figure>
+					{% endfor %}
+						</section> 
+
+			</section>
+		{% endfor %}
+	</main>
+
+
+{% endblock %}

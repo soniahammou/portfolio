@@ -1,0 +1,77 @@
+{% extends 'back/base.html.twig' %}
+
+
+
+{% block body %}
+
+{# TODO:Faire un tpl plus visuel #}
+
+	<div class="container">
+		<div class="row">
+			<div class="col md-12">
+				<table class="table table-striped table-hover table-sm-12">
+					<thead>
+						<tr>
+							<th scope="col">titre</th>
+							<th scope="col">Résumé</th>
+							<th scope="col">sous titre</th>
+							<th scope="col">contenu</th>
+                            <th scope="col">image</th>
+                            <th scope="col">logiciel</th>
+
+                            
+						</tr>
+					</thead>
+
+					<tbody>
+
+			<tr class="table">
+							<td>{{subproject.title}}</td>
+							<td>{{subproject.summary}}</td>
+							<td>{{subproject.subtitle}}</td>
+ 							<td>{{subproject.content}}</td>
+                           <td> {% for picture in subproject.pictures %}
+                            <img src="{{picture.subproject}}" alt="" class="img-thumbnail">
+                           {% endfor %} </td>
+                           <td> {% for logiciel in subproject.logiciels %}
+                           {{logiciel.name}}
+                           {% endfor %} </td>
+							{# {{TODO: ajouter la date de publi}} #}
+							<td>{{subproject.status}}</td>
+
+							{# {{TODO: ajouter une puce de couleur pour se reperer a coté du status}} #}
+
+							<td>
+								<button type="button" class="btn btn-warning">modifier</button>
+							</td>
+
+							{% if subproject.status is same as('Archivé')%}
+
+								<td>
+									<button type="button" class="btn btn-success">publié</button>
+								</td>
+
+							{% elseif subproject.status is same as('Brouillon')%}
+								<td>
+									<button type="button" class="btn btn-danger">archivé</button>
+								</td>
+								<td>
+									<button type="button" class="btn btn-success">publié</button>
+								</td>
+
+
+							{% else %}
+								<td>
+									<button type="button" class="btn btn-danger">archivé</button>
+								</td>
+							{% endif %}
+
+						</tr>
+
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+{# reception d'email depuis la boite mail #}
+
+{% apply inky_to_html|inline_css(source('@styles/email.css')) %}
+
+<container class="mail">
+	<row class="header">
+		<h4>Une nouvelle demande de contact a été recue</h4>
+        <h5>Depuis le site www.soniahammou.fr</h5>
+	</row>
+
+
+	<row class="mail-content">
+		<div class="mail-content-info">
+            <p>Prenom</p>
+			{{data.firstname}}</div>
+		<div class="mail-content-info">
+            <p>Nom</p>
+			{{data.lastname}}</div>
+		<div class="mail-content-info">
+            <p>Email</p>
+			{{data.email}}
+		</div>
+		<div class="mail-content-info"> 
+            <p>Message</p>
+			{{data.message | nl2br}}</div>
+	</row>
+
+</container>
+
++
+{% endapply %}

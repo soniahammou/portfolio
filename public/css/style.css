@@ -7,7 +7,12 @@ h4 {
     color: black;
     margin-bottom: 10px;
 }
-
+h3{ 
+        font-family : 'work sans';
+        color: black;
+        font-weight: 400;
+  }
+  
 h5 {
 
     font-size: 12px;
@@ -21,7 +26,7 @@ h5 {
 h6{
     font-family: Roboto Mono, monospace;
     text-transform: uppercase;
-    font-size: 15px;
+    font-size: 13px;
     letter-spacing: 5px;
     font-weight: 800;
     color: #3E3331;
@@ -57,6 +62,10 @@ p {
     margin: 0 20px;
     padding: 0 4px;
 }
+
+
+
+
 /* ---- FIN NAV BAR ----- */
 
 
@@ -67,6 +76,7 @@ p {
     display: flex;
     font-family: 'work sans';
     width: 100%;
+    height: 60vh;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -106,7 +116,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    /* padding: 20px; */
 }
 
 .main_home_section-projet {
@@ -115,6 +125,40 @@ p {
     height: 50%;
 
 
+}
+
+/* ---------- Section Home content------ */
+
+.main_home_about {
+    background: #fed049; 
+    padding: 90px;
+}
+
+.main_home_about-title{
+    font-weight: 500;
+    padding :  10px 0px;
+    font-size: 34px;
+    border-bottom:solid white 1px;
+    color : white;
+}
+
+.main_home_about-article{
+    display: flex;
+    /* flex-wrap: nowrap;  */
+    padding-top: 30px;
+}
+
+
+
+.main_home_about-article article {
+    padding: 10px 0px;
+    margin-right: 30px;
+    width: calc(100%/4);
+
+}
+
+.main_home_about-article-paragraph{
+    color : black;
 }
 
 
@@ -305,21 +349,18 @@ p {
 .main_show_project{
    display: flex;
    flex-wrap: wrap;
-   justify-content: center;
+   justify-content: flex-start;
    align-content: center;
+   padding: 30px;
 }
+
 
 /* ------ header ------ */
-
-.main_show_project header{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-content: flex-start;
-    padding-left: 10%;
-
+.main_show_project-header {
+    margin: 30px;
 }
-.main_show_project-title {
+
+.main_show_project-header-title {
     font-size: 40px;
     letter-spacing: 0.5px;
     font-family: 'Playfair Display SC', serif;
@@ -327,20 +368,36 @@ p {
 }
 
 
-.main_show_project-logiciels{
+.main_show_project-header-logiciels{
     color:#fed049;
     font-weight: 400;
     display: inline;
-}
+} 
 
 /* ------ Gallery ------ */
 
 .main_show_project-gallery{
    display: flex;
    justify-content: center;
+   align-content:center ;
    flex-wrap: wrap;
-   /* align-content:center ; */
+} 
+
+.main_show_project-gallery figure{
+    width:  calc(1/2*100vh);
+ } 
+
+
+/*---------------------------------------
+   Contact section              
+-----------------------------------------*/
+#contact {
+padding: 20px;
+margin-top: 5%;
+display: flex;
+flex-direction: column;
 }
+
 
 /*---------------------------------------
    Footer section              

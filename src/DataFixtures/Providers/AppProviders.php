@@ -38,41 +38,106 @@ class AppProviders
         'Independence Burger',
         'Fonds de Dotation Zidane',
         'Complexe sportif Z5',
+        'Bein Sport',
+        'l\'Apprimerie',
+        'Coudoux sport',
+        'Science Po',
+        'Institus Beauté',
         'Lou Maï',
         'Bein sports',
     ];
 
+    private $status = [
+        'Brouillon',
+        'Publié',
+        'Archivé',
+    ];
 
 
-    public function logiciels(): array
+    // getters
+
+    /**
+     * Retourne un tableau de logiciels pour les fixtures
+     *
+     * @return array
+     */
+    public function getlogicielsProvider(): array
     {
         return $this->logiciels;
     }
 
-    public function tag(): array
+     /**
+     * Retourne un tableau de tags pour les fixtures
+     *
+     * @return array
+     */
+    public function getTagProvider(): array
     {
         return $this->tag;
     }
-    public function projectName(): array
+
+     /**
+     * Retourne un tableau de nom de projets pour les fixtures
+     *
+     * @return array
+     */
+    public function getProjectNameProvider(): array
     {
         return $this->projectName;
     }
 
+    /**
+     * Retourne un tableau de logiciels pour les fixtures
+     *
+     * @return array
+     */
+    public function getStatusProvider(): array
+    {
+        return $this->status;
+    }
 
-    public function logicielsTitle(): string
+    // ! Liste de methodes de recuperation aléatoire de tableau
+     /**
+     * Retourne un nom aléatoire de logiciels pour les fixtures
+     *
+     * @return string
+     */
+    public function getOneRamdonLogiciel(): string
     {
         return $this->logiciels[array_rand($this->logiciels)];
     }
 
-    public function tagTitle(): string
+
+    /**
+     * Retourne un nom aléatoire de tag pour les fixtures
+     *
+     * @return string
+     */
+    public function getOneRamdonTag(): string
     {
         return $this->tag[array_rand($this->tag)];
     }
 
-    public function projecNameTitle(): string
+     /**
+     * Retourne un nom aléatoire de nom de projet pour les fixtures
+     *
+     * @return string
+     */
+    public function getOneRamdonProject(): string
     {
         return $this->projectName[array_rand($this->projectName)];
     }
+
+         /**
+     * Retourne un status aléatoire pour les projets et sous projets pour les fixtures
+     *
+     * @return string
+     */
+    public function getOneRamdonStatus(): string
+    {
+        return $this->status[array_rand($this->status)];
+    }
+
 
 
 }

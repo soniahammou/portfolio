@@ -5,11 +5,11 @@
 		<section class="main_home_content">
 
 		<div>
-			<h1 class="main_title">Graphiste, Illustratrice .</h1>
+			<h1 class="main_title"> Graphiste, Illustratrice .</h1>
 			<p>Ma priorité est de mener à bien vos projets ! Je réalise tous supports de communication print et numérique.</p>
 		<div>
 
-		<div>
+		<div class ="main_home_button">
 			<button class="main_home_content_button">
 				<a href="{{path('app_project_list')}}">Découvrir les projets</a>
 			</button>
@@ -19,10 +19,10 @@
 			</button>
 		</div>
 		</section>
-
-		<figure>
+{# 
+<figure class="home_image">
 			<img src="https://s.tmimgcdn.com/scr/800x500/337900/illustration-de-graphiste-filles-sur-ordinateur-vector-art-concepteur-concevant-un-travail-de-concept_337995-original.jpg">
-		</figure>
+		</figure> #}
 
 </div>
 
@@ -73,11 +73,11 @@ Section : Gallery dernier projets
 	<header class="galery-header">
 		<h1 class="main_title">Les derniers projets</h1>
 		<p>
-			Découvrez les derniers projets
+			Découvrez les dernières réalisation
 		</p>
 	</header>
+		
 </section>
-	
-	{% include "fragments/_gallery.html.twig" %}
+		{% include "./fragments/_gallery.html.twig" %}		
 
 {% endblock %}

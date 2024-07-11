@@ -10,11 +10,34 @@
 	  <a href="{{path('app_main')}}"><button type="button" class="btn btn-primary"> Voir le frontOffice</button></a>
 
     </div>
+    <div class="col-md-12 mt-5 mb-5"> 
+
+
+			<form action="{{path('app_back_projet_list')}}" method="post">
+				<label for="project-select">Choisissez un projet</label>
+<select class="form-select" aria-label="select project"name="search" type="search">
+
+					<option value="Voir tout">
+						Voir tout
+					</option>
+          
+					{% for project in list %}
+						<option value="{{project.title}}">{{project.title}}</option>
+					{% endfor %}
+					{# <option value="12">Projet</option> #}
+
+
+				</select>
+	<button class="btn btn-outline-danger" type="submit">
+					rechercher</button>
+</form>
+    </div>
   </div>
 </div>
 
-{% include "back/fragments/_project_list.html.twig" %}
 
+
+{% include "back/fragments/_project_list.html.twig" %}
 
 
 {% endblock %}

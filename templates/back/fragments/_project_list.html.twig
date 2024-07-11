@@ -28,8 +28,14 @@
               </td>
 
 					<td>{{projet.summary}}</td>
-					<td><img src="{{projet.picture}}" alt="" class="img-thumbnail"></td>
+					
+					{# <td><img src="/assets/images/{{projet.picture}}" alt="" class="img-thumbnail"> #}
+					<td><img src="{{asset('assets/images/')}}{{projet.picture}}" alt="" class="img-thumbnail">
+					<img src="{{projet.picture}}" alt="" class="img-thumbnail"></td>
 
+ {# <pre>
+	{{ dump(projet.picture) }}
+</pre> #}
 
 			{% set totalLength = 0 %}
 
@@ -44,28 +50,19 @@
         	<td><a href="{{path('app_back_projet_show', {id: projet.id})}}"><button type="button" class="btn btn-primary">voir</button></a></td>
         	<td><a href="{{path('app_back_projet_update', {id: projet.id})}}"><button type="button" class="btn btn-warning">modifier</button></a></td>
 			
-{# TODO:SIMPLIFIER LA CONDITION :  #}
-	{% if projet.status is same as('Archivé')%}	
-	<td><a href="{{path('app_back_projet_publishPost', {id: projet.id})}}"><button type="button" class="btn btn-success">publié</button></td>
+		
+
+			{% include "back/fragments/_boutons_actions.html.twig" with {'entityProperty':  projet.status, 'entity': 'projet', 'entityId': projet.id} %}
+
+
 	
-
-
-	{% elseif projet.status is same as('Brouillon')%}	
-	<td><a href="{{path('app_back_projet_publishPost',{id: projet.id})}}"><button type="button" class="btn btn-success">publié</button></td>
-	<td><a href="{{path('app_back_projet_archiver', {id: projet.id})}}"><button type="button" class="btn btn-danger">archivé</button></td>
-
-
-	{% else %}
-	<td><a href="{{path('app_back_projet_archiver', {id: projet.id})}}"><button type="button" class="btn btn-danger">archivé</button></td>
-	{% endif %}
+          {% endfor %}
 
 
 
 			<td>
 				</tr>
 
-			{% endfor %}
-				
 		</tbody>
 	</table>
 </div>

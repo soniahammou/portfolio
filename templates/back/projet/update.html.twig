@@ -10,15 +10,16 @@
 			{# <a href="{{ path('app_back_media_browse')}}" class="btn btn-secondary">Retour</a> #}
 			<h1>{{ project.title }}</h1>
 
-				{{ form_start(form, {"attr" : {"novalidate": "novalidate"}}) }}
+				{{ form_start(form, {"attr" : {"novalidate": "novalidate"}}) }} 
 					{{ form_row(form.title) }}
 					{{ form_row(form.summary) }}
-					{{ form_row(form.picture) }}
 					{{ form_row(form.logiciels) }}
 					{{ form_row(form.tags) }}
 					{{ form_row(form.status) }}
+					{{ form_row(form.pictureFile) }}
                     {{ form_row(form.created_at) }}
                     {{ form_row(form.updated_at) }}
+
 					<button class="btn btn-primary">Envoyer</button>
 
                     {{ form_end(form) }}

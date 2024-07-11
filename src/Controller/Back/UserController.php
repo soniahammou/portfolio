@@ -28,7 +28,7 @@ class UserController extends AbstractController
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-
+        
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($user);
             $entityManager->flush();
@@ -42,6 +42,7 @@ class UserController extends AbstractController
         ]);
     }
 
+
     #[Route('/{id}', name: 'app_back_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
@@ -50,8 +51,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    // TODO:CORRIGER L ERRERU
-    #[Route('/{id}/edit', name: 'app_back_user_edit', methods: ['GET', 'POST'])]
+    #[Route('/{id}/edit', name: 'app_back_user_edit', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(UserType::class, $user);
@@ -59,12 +59,13 @@ class UserController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+            $this->addFlash('success','modification reussi');
 
-            return $this->redirectToRoute('app_back_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_back_user_index');
         }
 
         return $this->render('back/user/edit.html.twig', [
-            // 'user' => $user,
+             'user' => $user,
             'form' => $form,
         ]);
     }

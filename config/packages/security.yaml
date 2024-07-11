@@ -9,6 +9,7 @@ security:
             entity:
                 class: App\Entity\User
                 property: email
+        # used to reload user from session & other features (e.g. switch_user)
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -40,6 +41,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/back/user, roles: ROLE_ADMIN }
+        - { path: ^/back, roles: IS_AUTHENTICATED }
 
 
         # - { path: ^/profile, roles: ROLE_USER }

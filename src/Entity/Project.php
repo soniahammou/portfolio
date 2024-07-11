@@ -6,9 +6,11 @@ use App\Repository\ProjectRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
+
 class Project
 {
     #[ORM\Id]
@@ -18,10 +20,6 @@ class Project
     
     #[Assert\NotBlank]
     #[ORM\Column(length: 255)]
-    #[Assert\Length(
-        min: 5,
-        max: 100,
-    )]
     private ?string $title = null;
 
     #[Assert\Length(
@@ -33,10 +31,13 @@ class Project
     #[Assert\Regex('/^\w+/')]
     private ?string $summary = null;
     
-    #[Assert\NotBlank]
     #[ORM\Column(length: 500)]
     private ?string $picture = null;
 
+    // // #[Assert\Image()]
+    // //mapping : defini dans vich_uplader.yaml / fileNameProperty : lros de la sauvegarde su fichier ilva recup les informations,n dans quel propriete on sauvegarde le fichier
+    // #[Vich\UploadableField(mapping: 'fileNames', fileNameProperty: 'picture')]
+    // private ?File $pictureFile = null;
 
 
     /**
@@ -180,6 +181,7 @@ class Project
 
         return $this;
     }
+
 
 
     /**

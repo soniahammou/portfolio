@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+{% extends 'back/base.html.twig' %}
 
-<title>User index</title>
 
 {% block body %}
     <h1>User index</h1>
+	<a href="{{ path('app_back_user_new') }}"><button type="button" class="btn btn-primary"> Créer un nouvel utilisateur</button></a>
 
     <table class="table">
         <thead>
@@ -25,8 +25,10 @@
                 <td>{{ user.password }}</td>
                 <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('app_back_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_back_user_edit', {'id': user.id}) }}">edit</a>
+                	<a href="{{ path('app_back_user_show', {'id': user.id}) }}"><button type="button" class="btn btn-primary"> show</button></a>
+                	<a href="{{ path('app_back_user_edit', {'id': user.id}) }}"><button type="button" class="btn btn-primary"> edit</button></a>
+
+
                 </td>
             </tr>
         {% else %}
@@ -37,5 +39,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_back_user_new') }}">Create new</a>
+   
 {% endblock %}

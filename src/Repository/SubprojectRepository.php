@@ -21,6 +21,21 @@ class SubprojectRepository extends ServiceEntityRepository
         parent::__construct($registry, Subproject::class);
     }
 
+    public function findByProject($search): array
+    {
+        return $this->createQueryBuilder('s')
+        //je veux selectionner la table subproject et project
+            ->select('s', 'p')
+            // j'indique le join, la cle etrangere etant project_id, doctrine detecte automatiquement donc je dois preciserr l entite uniquement + l allias de la table
+            ->join('s.project', 'p')
+            ->where('p.title LIKE :search')
+            ->setParameter('search', '%' . $search . '%')
+            ->orderBy('p.title', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
     //    /**
     //     * @return Subproject[] Returns an array of Subproject objects
     //     */

@@ -1,6 +1,5 @@
-<!DOCTYPE html>
+{% extends 'back/base.html.twig' %}
 
-<title>User</title>
 
 {% block body %}
     <h1>User</h1>
@@ -29,10 +28,10 @@
             </tr>
         </tbody>
     </table>
+    <a href="{{path('app_back_user_index') }}"><button type="button" class="btn btn-primary"> Retour à la liste</button></a>
+    <a href="{{path('app_back_user_edit', {'id': user.id}) }}"><button type="button" class="btn btn-primary"> Modifier</button></a>
 
-    <a href="{{ path('app_back_user_index') }}">back to list</a>
 
-    <a href="{{ path('app_back_user_edit', {'id': user.id}) }}">edit</a>
 
     {{ include('back/user/_delete_form.html.twig') }}
 {% endblock %}

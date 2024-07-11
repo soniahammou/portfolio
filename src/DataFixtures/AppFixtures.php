@@ -138,11 +138,11 @@ class AppFixtures extends Fixture
 
         // ! Logiciel //////////////////////////////////////////// 
 
-        for ($m = 0; $m <= 20; $m++) {
+        for ($m = 0; $m <= 5; $m++) {
             $logiciel = new Logiciel;
             // $logiciel->setName($outils[array_rand($outils)]);
 
-            $logiciel->setName($faker->getOneRamdonLogiciel());
+            $logiciel->setName($faker->unique()->getOneRamdonLogiciel());
 
             $logiciel->addProject($projects[array_rand($projects)]);
             $logiciel->addSubproject($subproject[array_rand($subproject)]);

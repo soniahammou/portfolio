@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Validator\Constraints\Image;
 
 class ProjectType extends AbstractType
 {
@@ -22,29 +23,19 @@ class ProjectType extends AbstractType
         $builder
             ->add('title',TextareaType::class)
             ->add('summary', TextareaType::class)
-            // TODO:METTRE EN PLACE L UPLOAD D IMAGE
-            ->add('picture', FileType::class,[
+            ->add('pictureFile', FileType::class,[
                 'label' => 'Brochure (PDF file)',
-                  // unmapped means that this field is not associated to any entity property
+                  // unmapped means that this field is not associated to any entity property : il n utilise nin getter ni setter
                   'mapped' => false,
 
                   // make it optional so you don't have to re-upload the PDF file
                   // every time you edit the Product details
                   'required' => false,
   
-                  // unmapped fields can't define their validation using attributes
-                  // in the associated entity, so you can use the PHP constraint classes
+                  // unmapped fields can't define their validation using attributes in the associated entity, so you can use the PHP constraint classes
                   'constraints' => [
-                      new File([
-                          'maxSize' => '1024k',
-                          'mimeTypes' => [
-                              'application/pdf',
-                              'application/x-pdf',
-                          ],
-                          'mimeTypesMessage' => 'Please upload a valid PDF document',
-                      ])
+                      new Image()
                   ],
-            
             ])
             ->add('created_at', DateTimeType::class, [
                 'widget' => 'single_text',

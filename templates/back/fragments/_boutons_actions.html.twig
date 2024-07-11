@@ -1,0 +1,15 @@
+
+{% if entityProperty is same as('Archivé') or entityProperty is same as('Brouillon') %}
+    <td>
+        <a href="{{ path('app_back_' ~ entity ~ '_publish', {id: entityId}) }}">
+            <button type="button" class="btn btn-success">publié</button>
+        </a>
+    </td>
+{% endif %}
+
+{% if entityProperty is same as('Publié') or entityProperty is same as('Brouillon') %}
+    <td>
+        <a href="{{ path('app_back_' ~ entity ~ '_archiver', {id: entityId}) }}">
+        </a>
+    </td>
+{% endif %}

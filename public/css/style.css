@@ -501,6 +501,22 @@ footer {
         width: 100%;
     }
 
+
+/*---title projet section---**/ 
+
+
+.header_show_project-main-title {
+    font-size: 3px;
+    border: solid red 2px;
+    width: 100%;
+}
+
+.header_show_project > header,
+.header_show_project > section {
+    padding: 0px;
+}
+
+
 /*---footer----**/ 
     .footer_wrapper{
         display: flex;
@@ -514,6 +530,9 @@ footer {
     .footer_title{
         margin-top: 10px;
     }
+
+
+    
 }
 
 
